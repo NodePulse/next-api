@@ -145,7 +145,12 @@ export const createBlog = async (req: Request) => {
       { newBlog },
       { status: 200, statusText: "Blog created successfully!" }
     );
-  } catch (error) {}
+  } catch (error) {
+    return NextResponse.json(
+      { error },
+      { status: 500, statusText: "Error in creating blog" }
+    );
+  }
 };
 
 export const getBlog = async (req: Request, context: { params: any }) => {
